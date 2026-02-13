@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Gohil - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-bg: #ecf0f1;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid var(--white);
+            margin-bottom: 2rem;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-info i {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            width: 25px;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Education Section */
+        .education-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .education-item {
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 1.5rem;
+            width: 15px;
+            height: 15px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 3px var(--secondary-color);
+        }
+
+        .education-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .degree {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .year {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .semester-grades {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .semester-grade {
+            background: var(--light-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .experience-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-card .role {
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-header {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .project-header i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .project-body h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: var(--light-bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--text-color);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--light-bg);
+            padding: 4rem 2rem;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-method {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-method i {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-method a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-method a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-color);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Meet Gohil</div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <img src="https://via.placeholder.com/180" alt="Meet Gohil" class="profile-img">
+            <h1>Meet Gohil</h1>
+            <h2>Android Application Developer</h2>
+            <p>BTech Student at Parul University | Passionate about Technology & Innovation</p>
+            <p>I love to explore, travel to new places, and gain experience seeking opportunities to learn</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="#projects" class="btn btn-secondary">View Projects</a>
+            </div>
+            <div class="social-links">
+                <a href="mailto:meetgohil726@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/meet-gohil" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="tel:+919082492314"><i class="fas fa-phone"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text fade-in">
+                <h3>Hello! I'm Meet Gohil</h3>
+                <p>I am a passionate BTech student at Parul University with a strong interest in Android application development and technology. My journey in tech has been driven by curiosity and a constant desire to learn and grow.</p>
+                <p>I love exploring new places, meeting new people, and gaining diverse experiences that help me grow both personally and professionally. I'm always seeking opportunities to learn and apply my knowledge to real-world projects.</p>
+            </div>
+            <div class="contact-info fade-in">
+                <ul>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Mumbai, India</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+91 90824 92314</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>meetgohil726@gmail.com</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-language"></i>
+                        <span>English, Hindi, Gujarati</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" style="background: var(--light-bg);">
+        <h2 class="section-title">Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-card fade-in">
+                <i class="fas fa-clock"></i>
+                <h3>Time Management</h3>
+                <p>Efficiently organizing and prioritizing tasks to meet deadlines</p>
+            </div>
+            <div class="skill-card fade-in">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Creativity</h3>
+                <p>Innovative thinking and problem-solving approaches</p>
+            </div>
+            <div class="skill-card fade-in">
+                <i class="fas fa-brain"></i>
+                <h3>Critical Thinking</h3>
+                <h3>Critical Thinking</h3>
+                <p>Analytical approach to complex problems</p>
+            </div>
+            <div class="skill-card fade-in">
+                <i class="fas fa-users"></i>
+                <h3>Leadership</h3>
+                <p>Guiding teams and driving projects to success</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="education-timeline">
+            <div class="education-item fade-in">
+                <h3>Parul Institute of Engineering and Technology</h3>
+                <div class="degree">Bachelor of Technology</div>
+                <div class="year">2022 - 2026</div>
+                <p>Cumulative Performance Index (up to 5th Sem): 6.58/10</p>
+                <div class="semester-grades">
+                    <div class="semester-grade">SEM 1: 6.53</div>
+                    <div class="semester-grade">SEM 2: 6.26</div>
+                    <div class="semester-grade">SEM 3: 6.39</div>
+                    <div class="semester-grade">SEM 4: 6.52</div>
+                    <div class="semester-grade">SEM 5: 6.50</div>
+                    <div class="semester-grade">SEM 6: 5.92</div>
+                    <div class="semester-grade">SEM 7: 6.89</div>
+                </div>
+            </div>
+            <div class="education-item fade-in">
+                <h3>Shree T.P.T. Bhatia College of Science and Technology</h3>
+                <div class="degree">Higher Secondary Certificate</div>
+                <div class="year">2020 - 2022</div>
+                <p>Percentage: 53.67%</p>
+            </div>
+            <div class="education-item fade-in">
+                <h3>Mahindra Academy</h3>
+                <div class="degree">Secondary School Certificate</div>
+                <div class="year">2008 - 2020</div>
+                <p>Percentage: 79.80%</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" style="background: var(--light-bg);">
+        <h2 class="section-title">Experience</h2>
+        <div class="experience-grid">
+            <div class="experience-card fade-in">
+                <h3>ADIS Technologies Private Limited</h3>
+                <div class="role">Intern - Android Application Developer (Java)</div>
+                <p>A technology company specializing in software solutions</p>
+                <ul>
+                    <li>Focused on Android application development and image processing</li>
+                    <li>Worked with Java for building robust mobile applications</li>
+                    <li>Gained hands-on experience in software development lifecycle</li>
+                </ul>
+            </div>
+            <div class="experience-card fade-in">
+                <h3>Teachnook</h3>
+                <div class="role">Intern - Brand Executive and Campus Ambassador</div>
+                <p>An educational platform that connects tutors and students</p>
+                <ul>
+                    <li>Participated in Brand Executive program for Teachnook</li>
+                    <li>Promoted educational initiatives on campus</li>
+                    <li>Engaged with students to enhance platform awareness</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="project-body">
+                    <h3>Image to Text Converter App</h3>
+                    <p>Android application for image text conversion. Developed an Android app that converts uploaded images into text using advanced OCR technology.</p>
+                    <div class="project-tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">OpenCV</span>
+                        <span class="tag">Android</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="project-body">
+                    <h3>Raisins Billing and Management Website</h3>
+                    <p>Website project for managing raisins billing. Designed a comprehensive website for raisins billing and management with user-friendly interface.</p>
+                    <div class="project-tags">
+                        <span class="tag">Web Development</span>
+                        <span class="tag">Database</span>
+                        <span class="tag">Billing System</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-content">
+            <h2 class="section-title">Get In Touch</h2>
+            <p>I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
+            <div class="contact-methods">
+                <div class="contact-method fade-in">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <a href="mailto:meetgohil726@gmail.com">meetgohil726@gmail.com</a>
+                </div>
+                <div class="contact-method fade-in">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <a href="tel:+919082492314">+91 90824 92314</a>
+                </div>
+                <div class="contact-method fade-in">
+                    <i class="fab fa-linkedin"></i>
+                    <h3>LinkedIn</h3>
+                    <a href="https://linkedin.com/in/meet-gohil" target="_blank">Connect with me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Meet Gohil. All rights reserved.</p>
+        <p>Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> and passion</p>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Active Navigation Highlight
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add typing effect to hero section
+        const heroText = "I love to explore, travel to new places, and gain experience seeking opportunities to learn";
+        let index = 0;
+
+        // Add scroll to top button functionality
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                if (window.scrollY > 500) {
+                    // You can add a scroll to top button here if needed
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>
